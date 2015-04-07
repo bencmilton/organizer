@@ -1,9 +1,13 @@
 // app/routes.js
-
-var Note = require('./models/note');
-var Movie = require('./models/movie');
-var Food = require('./models/food');
+var mongoose = require('mongoose');
 var request = require('request');
+
+//var Note = require('./models/note');
+var Movie = require('./models/movie');
+//var Food = require('./models/food');
+
+
+//var Movie = mongoose.model('Movie', MovieSchema);
 
 module.exports = function(app) {
 
@@ -32,8 +36,21 @@ module.exports = function(app) {
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
+
+                //send array of search results
                 res.send(body);
-            }
+
+                //get the first movie from search results
+                var movie = {rtObj: JSON.parse(body).movies[0]};
+
+                //create and save the first movie into database
+                Movie.create(movie, function (err, data, next){
+                    if (err) return next(err);
+                })
+
+
+
+            };
         })
     });
 

@@ -7,8 +7,11 @@ angular.module('MoviesCtrl', []).controller('MoviesController', function($scope,
 
     $scope.submit = function () {
 
-        if ($scope.text) {
-            var title = $scope.text;
+        //if ($scope.text) {
+        //    var title = $scope.text;
+
+        if ($scope.movieTitle) {
+            var title = $scope.movieTitle;
 
             MoviesFactory.getMovieByTitle(title).then(function (movie) {
                 console.log(movie);

@@ -10,9 +10,10 @@ app.factory('MoviesFactory', function ($http) {
                 params: {title: title}
             };
 
-            return $http(req).then( function (movie) {
+            return $http(req)
+                .then( function (movie) {
                 return movie.data.movies[0];
-            });
+                });
 
         }
 
