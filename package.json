@@ -1,5 +1,5 @@
 {
-  "name": "starter-node-angular",
+  "name": "organizer",
   "main": "server.js",
   "scripts": {
     "start": "nodemon -e html,js,css,scss server.js"

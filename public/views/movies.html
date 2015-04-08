@@ -11,7 +11,7 @@
                 Enter Movie:
                 <input type="text" ng-model="movieTitle" name="text" />
                 <input type="submit" id="submit" value="Submit" />
-                <pre>{{movieList}}  <img src='{{ poster }}'/></pre>
+                <pre ng-repeat="movie in movieList"> {{movie.rtObj.title}} ( {{movie.rtObj.year}} ) <img ng-src="{{ movie.rtObj.posters.thumbnail }}"/></pre>
             </form>
         </div><!-- /.col-lg-6 -->
     </div><!-- /.row -->

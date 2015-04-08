@@ -15,6 +15,14 @@ app.factory('MoviesFactory', function ($http) {
                 return movie.data.movies[0];
                 });
 
+        },
+
+        populateMovieList: function (){
+
+            return $http.get('/getmovies', {}).then( function(response){
+                return response.data;
+            });
+
         }
 
     };

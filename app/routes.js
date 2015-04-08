@@ -15,16 +15,10 @@ module.exports = function(app) {
     // handle things like api calls
     // authentication routes
 
-    app.get('/api/notes', function(req, res) {
-        // use mongoose to get all notes in the database
-        Note.find(function(err, nerds) {
-
-            // if there is an error retrieving, send the error.
-            // nothing after res.send(err) will execute
-            if (err)
-                res.send(err);
-
-            res.json(notes); // return all notes in JSON format
+    app.get('/getmovies', function(req, res) {
+        Movie.find({}, function(err, data, next){
+            if (err) return next(err);
+            res.send(data)
         });
     });
 
@@ -47,8 +41,6 @@ module.exports = function(app) {
                 Movie.create(movie, function (err, data, next){
                     if (err) return next(err);
                 })
-
-
 
             };
         })

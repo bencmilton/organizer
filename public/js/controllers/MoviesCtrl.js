@@ -7,19 +7,18 @@ angular.module('MoviesCtrl', []).controller('MoviesController', function($scope,
 
     $scope.submit = function () {
 
-        //if ($scope.text) {
-        //    var title = $scope.text;
-
         if ($scope.movieTitle) {
             var title = $scope.movieTitle;
 
-            MoviesFactory.getMovieByTitle(title).then(function (movie) {
-                console.log(movie);
-                $scope.movieList = movie.title + " (" + movie.year + ")";
-                $scope.poster = movie.posters.thumbnail;
-            });
-
+            MoviesFactory.getMovieByTitle(title)
+                .then(function (movie) {
+                    console.log(movie);
+                    return  MoviesFactory.populateMovieList()
+                .then(function (movies){
+                        console.log(movies);
+                        $scope.movieList = movies;
+                    });
+                });
         }
     }
-
 });
