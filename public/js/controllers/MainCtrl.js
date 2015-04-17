@@ -1,6 +1,13 @@
 // public/js/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', function($scope) {
+app.controller('MainController', function($scope, LoginFactory) {
+
+    $scope.loggedIn = false;
 
     $scope.tagline = 'Home tagline!';
+
+    $scope.endSession = function () {
+        $scope.loggedIn = false;
+        LoginFactory.logoutUser()
+    }
 
 });

@@ -1,0 +1,20 @@
+<!-- public/views/movies-list.html -->
+<div ng-controller="MoviesListController">
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <h1>Movie Lists</h1>
+            <form name="create-new-movie-list" ng-submit="createMovieList(newMovieList)" novalidate>
+
+                <pre ng-click="setCurrentList(list.listName, list._id)" ng-repeat="list in moviesLists"> {{list.listName}} <button style="float:right" ng-click="deleteList(list._id)" class="btn btn-xs btn-danger remove btn-circle"> x </button></pre>
+
+                <label>New List</label>
+                <input name="newMovieList" type="text" ng-model="newMovieList.name" required>
+                <button>Create</button>
+
+            </form>
+        </div>
+        <div class="col-xs-6 col-md-8">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

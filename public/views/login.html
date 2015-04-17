@@ -1,0 +1,29 @@
+
+    <div class="jumbotron">
+        <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h3>Login</h3>
+            <form name="login-form" ng-submit="login(userinfo)" novalidate>
+
+                <label>Email</label>
+                <input name="email" type="text" ng-model="userinfo.email" required><br/>
+                <label>Password</label>
+                <input name="password" type="password" ng-model="userinfo.password" required><br/>
+                <button>Submit</button>
+
+            </form>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h3>Create New Account</h3>
+            <form name="create-account" ng-submit="createUser(newuser)" novalidate>
+
+                <label>Email</label>
+                <input name="create-email" type="text" ng-model="newuser.email" required><br/>
+                <label>Password</label>
+                <input name="create-password" type="password" ng-model="newuser.password" required><br/>
+                <button>Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>

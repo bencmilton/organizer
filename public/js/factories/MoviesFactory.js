@@ -2,17 +2,16 @@ app.factory('MoviesFactory', function ($http) {
 
     return {
 
-        getMovieByTitle: function (title) {
-
+        getMovieByTitle: function (title, currList) {
             var req = {
                 method: 'GET',
                 url: '/search',
-                params: {title: title}
+                params: {title: title, list: currList}
             };
 
             return $http(req)
-                .then( function (movie) {
-                return movie.data.movies[0];
+                .then( function (list) {
+                    return list.data.movies;
                 });
 
         },
@@ -23,6 +22,19 @@ app.factory('MoviesFactory', function ($http) {
                 return response.data;
             });
 
+        },
+
+        findAndDeleteMovie: function (id, list) {
+            return $http.delete('/deletemovie/'+ list +'/' + id).then( function (response){
+                return response.data;
+            });
+        },
+
+        findCorrectArray: function (allArrays, currList){
+            return allArrays.filter(function(e){
+                 return e.listName === currList
+
+            })
         }
 
     };

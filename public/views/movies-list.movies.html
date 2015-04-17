@@ -1,0 +1,20 @@
+<!-- public/views/movies-list.movies.html -->
+
+<div class="jumbotron text-center" ng-controller="MoviesController">
+    <h1>{{currentList}}</h1>
+
+    <p ng-hide="loggedIn">Please <a ui-sref="login">Login</a> to See Your Movies</p>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form ng-submit="submit()">
+                Enter Movie:
+                <input type="text" ng-model="movieTitle" name="text" />
+                <input type="submit" id="submit" value="Submit" />
+                <pre ng-if="deleteThisMovie=true" ng-repeat="movie in movieList"><a href="{{movie.rtObj.links.alternate}}" id="{{movie.id}}" target="_blank">{{movie.rtObj.title}} </a>({{movie.rtObj.year}})  <img ng-src="{{ movie.rtObj.posters.thumbnail }}"/>  <button ng-click="deleteMovie(movie._id)" class="btn btn-xs btn-danger remove btn-circle"> x </button>
+                </pre>
+            </form>
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+</div>
