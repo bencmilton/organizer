@@ -7,9 +7,6 @@ app.factory('LoginFactory', function ($http, $location) {
             .then(function(response){
                 if (response.status === 200) return response.data
             })
-            .catch(function(error){
-                if (error.status === 401) $location.url('/error');
-            })
         },
 
         createNewUser: function (newuser) {

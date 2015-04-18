@@ -12,11 +12,17 @@ app.controller('LoginController', function($scope, LoginFactory, $state) {
     };
 
     $scope.login = function (user) {
-        LoginFactory.loginUser(user).then(function (data){
-            $scope.user.loggedIn = true;
-            console.log('user', $scope.user);
-            $state.go('home');
-        });
+        LoginFactory.loginUser(user)
+            .then(function (data){
+                $scope.user.loggedIn = true;
+                console.log('user', $scope.user);
+                $state.go('home');
+        })
+            .catch(function(user){
+                $scope.user.loggedIn = false;
+                console.log('user', $scope.user);
+                $state.go('error');
+            });
     };
 
     $scope.createUser = function (newuser){

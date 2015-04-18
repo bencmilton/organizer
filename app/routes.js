@@ -135,9 +135,10 @@ module.exports = function(app) {
     });
 
     app.post('/login', function (req, res, next) {
-        User.findOne(req.body, function (err, user) {
+        var attempt = req.body.password;
+        User.findOne({email: req.body.email}, function (err, user) {
             if (err) next(err);
-            else if (!user) res.send(401);
+            else if (!user || !user.authenticate(attempt)) res.send(401);
             else {
                 req.session.userId = user._id;
                 res.send(200);
