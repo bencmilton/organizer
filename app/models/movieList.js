@@ -10,6 +10,12 @@ var MovieListSchema = new Schema({
 
 });
 
+//removal middleware cleans up reference in User model on removal
+MovieListSchema.pre('remove', function(next){
+    User.remove({moviesLists: this._id}).exec();
+    next();
+});
+
 MovieList = mongoose.model('MovieList', MovieListSchema);
 
 

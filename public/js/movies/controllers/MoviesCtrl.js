@@ -1,9 +1,9 @@
 // public/js/controllers/MoviesCtrl.js
 app.controller('MoviesController', function($scope, MoviesFactory, $stateParams) {
-
+    $scope.pageTitle = 'Movies';
+    $scope.loggedIn = $stateParams.loggedIn;
     $scope.currentList = $stateParams.listname;
     $scope.currentListId = $stateParams.listid;
-    $scope.loggedIn = true;
     $scope.movieList = [];
 
 

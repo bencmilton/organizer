@@ -7,7 +7,7 @@ app.config(function($stateProvider, $locationProvider) {
         .state('home', {
             url: '/',
             templateUrl: 'views/home.html',
-            controller: 'MainController'
+            controller: 'HomeController'
         })
 
         // notes page that will use the NotesController
@@ -26,7 +26,7 @@ app.config(function($stateProvider, $locationProvider) {
 
         // moviesList.movies page that will use the MoviesController
         .state('movies-list.movies', {
-            url: '/movies/:listid/:listname',
+            url: '/movies/:listid/:listname/:loggedIn',
             templateUrl: 'views/movies-list.movies.html',
             controller: 'MoviesController'
         })

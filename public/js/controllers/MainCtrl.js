@@ -1,12 +1,14 @@
 // public/js/controllers/MainCtrl.js
 app.controller('MainController', function($scope, LoginFactory) {
 
-    $scope.loggedIn = false;
+    $scope.user = {
+        loggedIn: false,
+        userinfo: {}
+    };
 
-    $scope.tagline = 'Home tagline!';
-
+    //logout of session
     $scope.endSession = function () {
-        $scope.loggedIn = false;
+        $scope.user.loggedIn = false;
         LoginFactory.logoutUser()
     }
 

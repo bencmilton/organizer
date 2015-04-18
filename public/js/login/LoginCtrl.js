@@ -1,5 +1,5 @@
 // public/js/controllers/MoviesCtrl.js
-app.controller('LoginController', function($scope, LoginFactory) {
+app.controller('LoginController', function($scope, LoginFactory, $state) {
 
     $scope.newuser = {
         email: null,
@@ -12,7 +12,10 @@ app.controller('LoginController', function($scope, LoginFactory) {
     };
 
     $scope.login = function (user) {
-        LoginFactory.loginUser(user).then(function (){
+        LoginFactory.loginUser(user).then(function (data){
+            $scope.user.loggedIn = true;
+            console.log('user', $scope.user);
+            $state.go('home');
         });
     };
 

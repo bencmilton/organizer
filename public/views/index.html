@@ -20,24 +20,26 @@
 
     <!-- Controllers -->
     <script src="js/controllers/MainCtrl.js"></script>
-    <script src="js/controllers/NotesCtrl.js"></script>
-    <script src="js/controllers/MoviesCtrl.js"></script>
-    <script src="js/controllers/MoviesListCtrl.js"></script>
-    <script src="js/controllers/FoodCtrl.js"></script>
-    <script src="js/controllers/LoginCtrl.js"></script>
+    <script src="js/notes/controllers/NotesCtrl.js"></script>
+    <script src="js/movies/controllers/MoviesCtrl.js"></script>
+    <script src="js/movies/controllers/MoviesListCtrl.js"></script>
+    <script src="js/food/controllers/FoodCtrl.js"></script>
+    <script src="js/login/LoginCtrl.js"></script>
     <script src="js/controllers/ErrorCtrl.js"></script>
+    <script src="js/controllers/HomeCtrl.js"></script>
 
     <!-- Services -->
-    <script src="js/services/NotesService.js"></script>
-    <script src="js/services/MoviesService.js"></script>
-    <script src="js/services/FoodService.js"></script>
+    <script src="js/notes/services/NotesService.js"></script>
+    <script src="js/movies/services/MoviesService.js"></script>
+    <script src="js/food/services/FoodService.js"></script>
 
     <!-- Factories -->
-    <script src="js/factories/MoviesFactory.js"></script>
-    <script src="js/factories/MoviesListFactory.js"></script>
-    <script src="js/factories/LoginFactory.js"></script>
+    <script src="js/movies/factories/MoviesFactory.js"></script>
+    <script src="js/movies/factories/MoviesListFactory.js"></script>
+    <script src="js/login/LoginFactory.js"></script>
 
     <!-- Directives -->
+    <script src="js/login/goToLogin.js"></script>
 
 </head>
 <body ng-app="organizer" ng-controller="MainController">
@@ -56,8 +58,8 @@
             <li><a ui-sref="food">Food</a></li>
         </ul>
         <ul id="login-logout" class="nav navbar-nav">
-            <li><a ui-sref="login">Login</a></li> <!--ng-hide="loggedIn"-->
-            <li><a ui-sref="logout" ng-click="endSession()">Logout</a></li> <!--ng-show="loggedIn"-->
+            <li><a ui-sref="login" ng-hide="user.loggedIn">Login</a></li> <!--ng-hide="loggedIn"-->
+            <li><a ui-sref="logout" ng-show="user.loggedIn" ng-click="endSession()">Logout</a></li> <!--ng-show="loggedIn"-->
         </ul>
     </nav>
 

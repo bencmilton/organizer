@@ -33,8 +33,6 @@ module.exports = function(app) {
     });
 
     app.delete('/deleteMovie/:list/:id', function (req, res){
-        console.log('req params id!!! ', req.params.id)
-        console.log('req params list!!! ', req.params.list)
         MovieList
             .findById(req.params.list, function (err, list){
                 list.movies.remove(req.params.id);
@@ -83,7 +81,7 @@ module.exports = function(app) {
             User.findById(req.session.userId)
                 .populate('moviesLists')
                 .exec( function(err, user, next){
-                if (err)  next(err);
+                if (err) next(err);
                 else {
                     res.send(user.moviesLists);
                 }
@@ -94,7 +92,7 @@ module.exports = function(app) {
     });
 
 
-      app.post('/new-movie-list', function (req, res, next) {
+    app.post('/new-movie-list', function (req, res, next) {
 
         MovieList.create({'listName': req.body.name}, function (err, list){
             if (err) return next(err);
@@ -106,7 +104,21 @@ module.exports = function(app) {
                     if (err) return next(err);
                     res.send(list);
                 })
-        })
+            })
+    });
+
+    app.delete('/delete-list/:id', function (req, res, next) {
+        console.log('req.params: ', req.params.id);
+        MovieList
+            .findByIdAndRemove(
+                req.params.id,
+                function(err, list, next){
+                    if (err) next(err);
+                    else {
+                        console.log(list + ' deleted.');
+                        res.send(204);
+                    }
+            })
     });
 
     // user login routes =========================================================
